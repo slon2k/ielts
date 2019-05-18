@@ -1,0 +1,11 @@
+.header__grades {
+    display: inline-block;
+}
+
+.header__grades {
+    margin-right: 25px;
+}
+
+.header__grades--active {
+    color: blue;
+}
