@@ -11,10 +11,12 @@ import './main.css'
 const Main = ({students}) => {
     //const studentList = [...students].map((item) => { return (<li key={item.id}>{item.firstName} {item.lastName}</li>)});
     const tableRows = [...students].map(student => { return (
-        <TableRow>
+        <TableRow key={student.id}>
             <TableCell>{student.firstName} {student.lastName}</TableCell>
             <TableCell>{student.grade} {student.letter}</TableCell>
+            <TableCell>{student.date.toLocaleDateString()}</TableCell>
             <TableCell>{student.level}</TableCell>
+            <TableCell>{student.center}</TableCell>
         </TableRow>
     )});
     return (
@@ -25,7 +27,9 @@ const Main = ({students}) => {
                         <TableRow>
                             <TableCell>Name</TableCell>
                             <TableCell>Class</TableCell>
+                            <TableCell>Exam Date</TableCell>
                             <TableCell>Level</TableCell>
+                            <TableCell>Test Center</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
