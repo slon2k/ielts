@@ -10,6 +10,12 @@ import './main.css'
 
 
 const Main = ({students}) => {
+    const data = [...students];
+    for (let i=0; i < data.length ; i++) {
+        data[i].name = data[i].firstName + ' ' + data[i].lastName;
+        data[i].classs = data[i].grade + ' ' + data[i].letter;
+    }
+
     //const studentList = [...students].map((item) => { return (<li key={item.id}>{item.firstName} {item.lastName}</li>)});
     const tableRows = [...students].map(student => { return (
         <TableRow key={student.id}>
@@ -39,7 +45,7 @@ const Main = ({students}) => {
                 </Table>
             </Paper>
 
-            <EnhancedTable ></EnhancedTable>
+            <EnhancedTable data = {data}/>
 
         </div>
     );
