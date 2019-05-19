@@ -5,8 +5,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-
+import EnhancedTable from "../EnhancedTable";
 import './main.css'
+
 
 const Main = ({students}) => {
     //const studentList = [...students].map((item) => { return (<li key={item.id}>{item.firstName} {item.lastName}</li>)});
@@ -37,6 +38,8 @@ const Main = ({students}) => {
                     </TableBody>
                 </Table>
             </Paper>
+
+            <EnhancedTable ></EnhancedTable>
 
         </div>
     );
