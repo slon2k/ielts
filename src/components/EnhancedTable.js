@@ -36,8 +36,8 @@ function getSorting(order, orderBy) {
 }
 
 const rows = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-    { id: 'grade', numeric: false, disablePadding: false, label: 'Grade' },
+    { id: 'name', numeric: false, disablePadding: false, label: 'Name' },
+    { id: 'classs', numeric: false, disablePadding: false, label: 'Grade' },
     { id: 'date', numeric: false, disablePadding: false, label: 'Exam date' },
     { id: 'level', numeric: true, disablePadding: false, label: 'Level' },
     { id: 'center', numeric: false, disablePadding: false, label: 'Test Center' },
@@ -152,7 +152,7 @@ class EnhancedTable extends React.Component {
                                             tabIndex={-1}
                                             key={n.id}
                                         >
-                                            <TableCell component="th" scope="row" padding="none">
+                                            <TableCell component="th" scope="row" padding="15px">
                                                 {n.name}
                                             </TableCell>
                                             <TableCell>{n.classs}</TableCell>
