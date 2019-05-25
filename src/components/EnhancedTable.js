@@ -10,6 +10,8 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 
+import Student from './student';
+
 
 function desc(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -152,8 +154,9 @@ class EnhancedTable extends React.Component {
                                             tabIndex={-1}
                                             key={n.id}
                                         >
-                                            <TableCell component="th" scope="row" padding="15px">
+                                            <TableCell component="th" scope="row">
                                                 {n.name}
+                                                <Student student = {n}/>
                                             </TableCell>
                                             <TableCell>{n.classs}</TableCell>
                                             <TableCell>{n.date.toLocaleDateString()}</TableCell>
