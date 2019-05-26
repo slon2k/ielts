@@ -48,18 +48,19 @@ export default class App extends Component {
     };
 
     updateStudent = (student) => {
+        let students = [...this.state.students];
         const index = this.state.students.findIndex((item) => item.id === student.id);
         if(index > -1) {
             console.log(`student with id ${student.id} was found`);
-            let students = [...this.state.students];
             students[index] =  student;
-            this.setState({
-                students: students
-            });
         }
         else {
             console.log(`student with id ${student.id} was not found`);
+            students.push(student);
         }
+        this.setState({
+            students: students
+        });
     };
 
     componentWillMount() {
@@ -101,7 +102,12 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <Header grades = {this.state.grades} toggleGradeSelection = {this.toggleGradeSelection} onSearchChanged = {this.onSearchChanged}/>
+                <Header
+                    grades = {this.state.grades}
+                    toggleGradeSelection = {this.toggleGradeSelection}
+                    onSearchChanged = {this.onSearchChanged}
+                    updateStudent = {this.updateStudent}
+                />
                 <Main students = {this.filteredStudents()} updateStudent = {this.updateStudent}/>
             </div>
         );

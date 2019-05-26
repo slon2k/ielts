@@ -6,6 +6,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import SearchIcon from '@material-ui/icons/Search';
 
+import Create from '../create';
+
 import './header.css'
 
 const classes = {
@@ -51,7 +53,7 @@ const classes = {
 };
 
 
-const Header = ({grades, toggleGradeSelection, onSearchChanged}) => {
+const Header = ({grades, toggleGradeSelection, onSearchChanged, updateStudent}) => {
 
 
     const menuItems = [...grades].map((item) => {
@@ -85,6 +87,7 @@ const Header = ({grades, toggleGradeSelection, onSearchChanged}) => {
                 </Toolbar>
             </AppBar>
             {menuItems}
+            <Create updateStudent = {updateStudent}/>
 
         </div>
 

@@ -1,33 +1,28 @@
 import React from 'react'
 
-import './student.css'
+import './create.css'
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
-import IconButton from '@material-ui/core/IconButton';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 
 
-function isValidDate(date) {
-    return date && Object.prototype.toString.call(date) === "[object Date]" && !isNaN(date);
-}
-
-
-const Student = ({student, updateStudent}) => {
+const Create = ({updateStudent}) => {
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
-        id: student.id,
-        firstName: student.firstName,
-        lastName: student.lastName,
-        letter: student.letter,
-        grade: student.grade,
-        date: isValidDate(student.date) ? student.date.toISOString().slice(0,10) : null,
-        level: student.level,
-        center: student.center,
+        id: Date.now(),
+        firstName: '',
+        lastName: '',
+        letter: 'A',
+        grade: 7,
+        date: null,
+        level: 5,
+        center: '',
     });
 
     const letters = ["A", "B", "C", "D", "E", "F"];
@@ -52,7 +47,20 @@ const Student = ({student, updateStudent}) => {
         console.log(`Saving:`);
         console.log(values);
         updateStudent(student);
+        setValues(
+        {
+            id: Date.now(),
+            firstName: '',
+            lastName: '',
+            letter: 'A',
+            grade: 7,
+            date: null,
+            level: 5,
+            center: '',
+        });
+
         setOpen(false);
+
     };
 
     function handleClickOpen() {
@@ -64,17 +72,20 @@ const Student = ({student, updateStudent}) => {
     }
     return(
         <span>
-            <IconButton
-                aria-label="More"
+            <Fab
+                size="medium"
+                color="secondary"
+                aria-label="Add"
                 aria-owns={open ? 'long-menu' : undefined}
                 aria-haspopup="true"
                 onClick={handleClickOpen}
+                style = {{marginLeft: 50}}
                 >
-                <MoreHorizIcon />
-            </IconButton>
+                <AddIcon />
+            </Fab>
             <form noValidate autoComplete="off">
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">{student.name}</DialogTitle>
+                <DialogTitle id="form-dialog-title">New Student</DialogTitle>
                 <DialogContent>
                     <TextField
                       margin="dense"
@@ -167,4 +178,4 @@ const Student = ({student, updateStudent}) => {
     );
 };
 
-export default Student
+export default Create
