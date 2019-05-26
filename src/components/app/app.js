@@ -10,13 +10,19 @@ export default class App extends Component {
 
     state = {
         students: [],
-        grades: []
+        grades: [],
+        search: ''
     };
 
     onStudentsLoaded = (students) => {
         this.setState({
             students: [...students]
         });
+    };
+
+    onSearchChanged = (search) => {
+        this.setState({search});
+        console.log(search);
     };
 
     onGradesLoaded = (grades) => {
@@ -67,13 +73,20 @@ export default class App extends Component {
     };
 
     filteredStudents = () => {
-        return [...this.state.students.filter((item) => {return this.isGradeSelected(item.grade)})]
+        const search = this.state.search;
+        const result = [...this.state.students.filter((item) => {return this.isGradeSelected(item.grade)})];
+        if (search !== '') {
+            return result.filter((item) => {
+                return ((item.firstName.toLowerCase().indexOf(search.toLowerCase()) > -1) || (item.lastName.toLowerCase().indexOf(search.toLowerCase()) > -1));
+            })
+        }
+        return result;
     };
 
     render() {
         return (
             <div>
-                <Header grades = {this.state.grades} toggleGradeSelection = {this.toggleGradeSelection}/>
+                <Header grades = {this.state.grades} toggleGradeSelection = {this.toggleGradeSelection} onSearchChanged = {this.onSearchChanged}/>
                 <Main students = {this.filteredStudents()}/>
             </div>);
     };
