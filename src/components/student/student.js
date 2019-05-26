@@ -12,7 +12,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Button from "@material-ui/core/Button";
 
 
-const Student = ({student}) => {
+const Student = ({student, updateStudent}) => {
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = React.useState({
         id: student.id,
@@ -33,8 +33,20 @@ const Student = ({student}) => {
     };
 
     const handleSave = () => {
+        const student = {
+            id: values.id,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            letter: values.letter,
+            grade: values.grade,
+            date: new Date(values.date),
+            level: values.level,
+            center: values.center,
+        };
+
         console.log(`Saving:`);
         console.log(values);
+        updateStudent(student);
         setOpen(false);
     };
 

@@ -47,6 +47,21 @@ export default class App extends Component {
             .catch(this.onError);
     };
 
+    updateStudent = (student) => {
+        const index = this.state.students.findIndex((item) => item.id === student.id);
+        if(index > -1) {
+            console.log(`student with id ${student.id} was found`);
+            let students = [...this.state.students];
+            students[index] =  student;
+            this.setState({
+                students: students
+            });
+        }
+        else {
+            console.log(`student with id ${student.id} was not found`);
+        }
+    };
+
     componentWillMount() {
         this.getStudents();
         this.getGrades();
@@ -87,7 +102,8 @@ export default class App extends Component {
         return (
             <div>
                 <Header grades = {this.state.grades} toggleGradeSelection = {this.toggleGradeSelection} onSearchChanged = {this.onSearchChanged}/>
-                <Main students = {this.filteredStudents()}/>
-            </div>);
+                <Main students = {this.filteredStudents()} updateStudent = {this.updateStudent}/>
+            </div>
+        );
     };
 }

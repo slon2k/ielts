@@ -2,7 +2,7 @@ import React from 'react'
 import EnhancedTable from "../EnhancedTable";
 import './main.css'
 
-const Main = ({students}) => {
+const Main = ({students, updateStudent}) => {
     const data = [...students];
     for (let i=0; i < data.length ; i++) {
         data[i].name = data[i].firstName + ' ' + data[i].lastName;
@@ -11,7 +11,7 @@ const Main = ({students}) => {
 
     return (
         <div>
-            <EnhancedTable data = {data}/>
+            <EnhancedTable data = {data} updateStudent = {updateStudent}/>
         </div>
     );
 };

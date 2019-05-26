@@ -131,7 +131,7 @@ class EnhancedTable extends React.Component {
     }
 
     render() {
-        const { classes, data } = this.props;
+        const { classes, data, updateStudent} = this.props;
         const { order, orderBy} = this.state;
 
         return (
@@ -156,7 +156,7 @@ class EnhancedTable extends React.Component {
                                         >
                                             <TableCell component="th" scope="row">
                                                 {n.name}
-                                                <Student student = {n}/>
+                                                <Student student = {n} updateStudent = {updateStudent}/>
                                             </TableCell>
                                             <TableCell>{n.classs}</TableCell>
                                             <TableCell>{n.date.toLocaleDateString()}</TableCell>
